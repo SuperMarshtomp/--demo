@@ -34,17 +34,6 @@ class Home extends Component {
     console.log('handleSearchClick');
   }
 
-  handleLocationClick () {
-    console.log('handleLocationClick');
-  }
-
-  handleTipClick () {
-    console.log('handleTipClick');
-    this.setState({
-      showTip: false
-    })
-  }
-
   handleBrandClick () {
     console.log('handleBrandClick');
   }
@@ -110,12 +99,8 @@ class Home extends Component {
       <View className='home'>
         <Title />
         <Search onClick={ () => this.handleSearchClick() }/>
-        <Location city='广州' onClick={ () => this.handleLocationClick() }/>
-        { 
-          this.state.showTip 
-          ? <Tip onClick={ () => this.handleTipClick() }/> 
-          : <View></View> 
-        }
+        <Location city='广州' />
+        <Tip/> 
 
         <View className='index-select-view'>
           <View className='index-select-item' onClick={ () => this.handleBrandClick() }>
@@ -125,6 +110,7 @@ class Home extends Component {
             <Select title='全部等级'/> 
           </View>
         </View>
+        
         <ScrollView
           scrollY
           className='home__wrap'
