@@ -1,0 +1,24 @@
+@import "@styles/theme.scss";
+
+.text-input {
+    display: flex;
+    height: 80px;
+    line-height: 80px;
+
+    border-bottom: 1px solid $text-color-lighter;
+    font-size: 30px;
+}
+
+.text-input-name {
+    width: 30%;
+}
+
+.text-input-item-view {
+    width: 70%;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.text-input-item {
+    height: 100%;
+}
