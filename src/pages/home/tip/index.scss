@@ -1,3 +1,5 @@
+@import "@styles/theme.scss";
+
 .tip {
     display: flex;
     flex-direction: row;
@@ -12,7 +14,7 @@
 
     font-size: 20px;
     text-align: left;
-    background-color: #ff204d;
+    background-color: $primary-color;
     color: #ffffff;
 }
 
