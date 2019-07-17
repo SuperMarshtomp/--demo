@@ -1,0 +1,31 @@
+@import "@styles/theme.scss";
+
+.confirm-intro {
+    margin: 20px;
+    font-size: 26px;
+}
+
+.confirm-intro-check {
+    width: 35px;
+    height: 35px;
+}
+
+.confirm-intro-key {
+    color: $primary-color;
+}
+
+.confirm-btn-view {
+    margin: 0 20px;
+}
+
+.confirm-btn {
+    height: 80px;
+    line-height: 80px;
+
+    background-color: $primary-color;
+    color: $white;
+
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
+}

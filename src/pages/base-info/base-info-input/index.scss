@@ -1,0 +1,32 @@
+@import "@styles/theme.scss";
+
+.base-info-input-view {
+    background-color: $white;
+}
+
+.base-info-input {
+    margin-left: 25px;
+}
+
+.base-info-input-verify {
+    display: flex;
+    border-bottom: 1px solid $text-color-lighter;
+}
+
+.base-info-input-verify-btn-view {
+    width: 25%;
+
+    font-size: 28px;
+}
+
+.base-info-input-verify-btn {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+
+    margin: 10px;
+
+    background-color: $primary-color;
+    border-radius: 10px;
+    color: $white;
+}
