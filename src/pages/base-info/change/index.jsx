@@ -12,7 +12,7 @@ export default class Change extends Component {
                     </Text>
                 </View>
                 <View className='change-btn-view'>
-                    <Text className='change-btn'>
+                    <Text className='change-btn' onClick={this.props.onClick}>
                         重新选卡
                     </Text>
                 </View>

@@ -6,11 +6,16 @@ import Title from '@components/title'
 import Change from './change'
 
 export default class BaseInfo extends Component {
+
+    handleChangeClick = () => {
+        console.log('handleChangeClick');
+    }
+
     render () {
         return (
             <View>
                 <Title />
-                <Change cardName='故宫-九有一心红白金卡' />
+                <Change cardName='故宫-九有一心红白金卡' onClick={this.handleChangeClick} />
             </View>
         )
     }
