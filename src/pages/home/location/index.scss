@@ -1,0 +1,30 @@
+.location {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+
+    padding: 0 20px;
+    font-size: 26px;
+}
+
+.location-city {
+    display: flex;
+
+    height: 30px;
+    padding: 15px 0;
+    line-height: 30px;
+}
+
+.location-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+.location-button-view {
+    color: #cc0000;
+
+    height: 30px;
+    padding: 15px 0;
+    line-height: 30px;
+}

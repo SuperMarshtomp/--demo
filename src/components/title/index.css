@@ -1,0 +1,11 @@
+.title {
+    background-color: #cc0000;
+    color: #ffffff;
+
+    height: 80px;
+    line-height: 80px;
+    
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}

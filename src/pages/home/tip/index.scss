@@ -1,0 +1,29 @@
+.tip {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 90%;
+    height: 80px;
+
+    padding: 10px 20px;
+    margin: 5px auto;
+    border-radius: 10px;
+
+    font-size: 20px;
+    text-align: left;
+    background-color: #ff204d;
+    color: #ffffff;
+}
+
+.text {
+    width: 80%;
+}
+
+.button {
+    // margin: 20px 10px;
+    line-height: 55px;
+    padding: 0 10px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+}
