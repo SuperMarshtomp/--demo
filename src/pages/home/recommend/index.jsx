@@ -16,42 +16,48 @@ export default class Recommend extends Component {
   }
 
   render () {
-    const { list } = this.props
+    const { list,isList } = this.props
     return (
-      <View className='home-recommend'>
-        <View className='home-recommend__list'>
-          {list.filter(item => item.type === 1).map((item) => {
-            const { id, categoryItem } = item
-            return (
-              <View
-                key={id}
-                className='home-recommend__list-item'
-                onClick={this.handleClick.bind(this, id)}
-              >
-                <Text className='home-recommend__list-item-name' numberOfLines={1}>
-                  {categoryItem.name}
-                </Text>
+      <View>
+        {
+          isList ?
+          <View className='home-recommend'>
+            <View className='home-recommend__list'>
+              {list.filter(item => item.type === 1).map((item) => {
+                const { id, categoryItem } = item
+                return (
+                  <View
+                    key={id}
+                    className='home-recommend__list-item'
+                    onClick={this.handleClick.bind(this, id)}
+                  >
+                    <Text className='home-recommend__list-item-name' numberOfLines={1}>
+                      {categoryItem.name}
+                    </Text>
 
-                <Image className='home-recommend__list-item-img' src={categoryItem.listPicUrl} />
-                {!!categoryItem.simpleDesc && !categoryItem.simpleDescClose &&
-                  <Text className='home-recommend__list-item-desc'>
-                    {categoryItem.simpleDesc}
-                  </Text>
-                }
-                {/* <View className='home-recommend__list-item-info'>
-                  {!!categoryItem.limitedTag &&
-                    <Tag text={categoryItem.limitedTag} />
-                  }
-                </View> */}
-                <View className='home-recommend__list-item-btn'>
-                  <Text numberOfLines={1}>
-                    立即申请
-                  </Text>
-                </View>
-              </View>
-            )
-          })}
-        </View>
+                    <Image className='home-recommend__list-item-img' src={categoryItem.listPicUrl} />
+                    {!!categoryItem.simpleDesc && !categoryItem.simpleDescClose &&
+                      <Text className='home-recommend__list-item-desc'>
+                        {categoryItem.simpleDesc}
+                      </Text>
+                    }
+                    {/* <View className='home-recommend__list-item-info'>
+                      {!!categoryItem.limitedTag &&
+                        <Tag text={categoryItem.limitedTag} />
+                      }
+                    </View> */}
+                    <View className='home-recommend__list-item-btn'>
+                      <Text numberOfLines={1}>
+                        立即申请
+                      </Text>
+                    </View>
+                  </View>
+                )
+              })}
+            </View>
+          </View>
+          :<View />
+        }
       </View>
     )
   }

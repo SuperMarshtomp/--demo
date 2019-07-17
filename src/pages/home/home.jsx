@@ -27,7 +27,8 @@ class Home extends Component {
     loading: false,
     lastItemId: 0,
     hasMore: true,
-    showTip: true
+    showTip: true,
+    isList: true
   }
 
   handleSearchClick () {
@@ -40,6 +41,13 @@ class Home extends Component {
 
   handleLevelClick () {
     console.log('handleLevelClick');
+  }
+
+  changeList = () => {
+    console.log('handleIconClick');
+    this.setState({
+      isList: !this.state.isList
+    })
   }
 
   componentDidMount() {
@@ -98,7 +106,7 @@ class Home extends Component {
     return (
       <View className='home'>
         <Title />
-        <Search onClick={ () => this.handleSearchClick() }/>
+        <Search isList = {this.state.isList} changeList = {this.changeList} onClick={ () => this.handleSearchClick() }/>
         <Location city='广州' />
         <Tip/> 
 
@@ -115,11 +123,11 @@ class Home extends Component {
           scrollY
           className='home__wrap'
           onScrollToLower={this.loadRecommend}
-          style={{ height: getWindowHeight() }}
+          style={{ height: getWindowHeight()}}
         >
         
           {/* 为你推荐 */}
-          <Recommend list={recommend} />
+          <Recommend list={recommend} isList = {this.state.isList}/>
 {/* 
           {this.state.loading &&
             <View className='home__loading'>

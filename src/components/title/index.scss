@@ -1,5 +1,7 @@
+@import "@styles/theme.scss";
+
 .title {
-    background-color: #cc0000;
+    background-color: $primary-color;
     color: #ffffff;
 
     height: 80px;

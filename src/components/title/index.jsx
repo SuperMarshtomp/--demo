@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import './index.css'
+import './index.scss'
 
 export default class Title extends Component {
     render () {
