@@ -51,12 +51,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // NOTE 暂时去掉不适配的内容
-    // Taro.showToast({
-    //   title: '注意，由于严选小程序首页界面、接口大幅变动，暂时去掉不相符的部分，后续再跟进改动',
-    //   icon: 'none',
-    //   duration: 6000
-    // })
 
     this.props.dispatchHome().then(() => {
       this.setState({ loaded: true })
@@ -128,17 +122,6 @@ class Home extends Component {
         
           {/* 为你推荐 */}
           <Recommend list={recommend} isList = {this.state.isList}/>
-{/* 
-          {this.state.loading &&
-            <View className='home__loading'>
-              <Text className='home__loading-txt'>正在加载中...</Text>
-            </View>
-          }
-          {!this.state.hasMore &&
-            <View className='home__loading home__loading--not-more'>
-              <Text className='home__loading-txt'>更多内容，敬请期待</Text>
-            </View>
-          } */}
         </ScrollView>
       </View>
     )

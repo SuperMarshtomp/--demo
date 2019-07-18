@@ -38,12 +38,12 @@
       padding: 0 12px;
       // width: 300px;
       height: 70px;
-      line-height: 70px;
-      color: #9e8962;
+      // line-height: 70px;
+      color: #000000;
       font-size: 24px;
       background: #fff;
       border-bottom:1px solid #dddddd; 
-      @include text-ellipsis;
+      // @include text-ellipsis;
     }
 
     &-img {
@@ -79,53 +79,72 @@
       border-bottom:1px solid #dddddd; 
       @include text-ellipsis;
     }
+  }
+}
 
-    &-price-wrap {
+.home-recommend__list2 {
+  background: #f2f2f2;
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    width: 100%;
+    border-bottom:1px solid $border-color; 
+
+    
+
+    &-img {
+      align-self: center;
+      width: 25%;
+      height: 200px;
+      padding: 20px;
+    }
+
+    &-info {
+      // margin-top: 20px;
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      
     }
 
-    &-price {
-      color: $primary-color;
-      font-size: 32px;
-      line-height: 48px;
+    &-btn{
+      background-color: $primary-color;   
+      color: #fff;
+      font-size: 28px;
+      padding: 3px;
+      height: 50px;
+      margin: 70px 40px;
+      text-align: center;
+      border-radius: 15px;
     }
 
-    &-price--origin {
-      margin-left: 14px;
-      color: $text-color-lighter;
-      font-size: 30px;
-      font-weight: 200;
-      line-height: 48px;
-      text-decoration: line-through;
-      text-decoration-color: $text-color-lighter;
-    }
-
-    &-commend {
+    &-text{
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-top: 10px;
-      padding: 0 10px;
-      height: 70px;
-      border-radius: 35px;
-      background: #f3f3f3;
-
-      &-img {
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
+      flex-direction: column;
+      width: 47%;
+      
+      &-name {
+        color: $text-color;
+        font-size: 38px;
+        line-height: 90px;
+        text-align: left;
+        
+        @include text-ellipsis;
+          
       }
 
-      &-txt {
-        flex: 1;
-        margin-left: 10px;
-        color: $text-color-lighter;
+      &-desc {
+        // width: 300px;
+        // height: 70px;
+        // line-height: 70px;
+        // color: #000000;
         font-size: 24px;
-        line-height: 30px;
-        @include lamp-clamp(2);
+        // background: #fff;
+        text-align: left;
+        // @include text-ellipsis;
       }
     }
   }
 }
+  
