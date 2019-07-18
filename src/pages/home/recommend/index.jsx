@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, Button, CoverView } from '@tarojs/components'
+import { Modal } from "react-native";
 import { Tag } from '@components'
-import defaultAvatar from '@assets/default-avatar.png'
 import './index.scss'
 
 export default class Recommend extends Component {
@@ -46,16 +46,45 @@ export default class Recommend extends Component {
     return (
       <View className='home-recommend'>
         {
-          this.state.showDetail ?
-          <View class="b1" onClick={ this.handleHidden }>
-            <View class="b2">
+          process.env.TARO_ENV === 'weapp' && this.state.showDetail ?
+          <View className="w1" onClick={ this.handleHidden }>
+            <View className="w2">
               <Text>
                 {showItem.name}
               </Text>
             </View>
-                <CoverView class="t_image">
+                <CoverView>
                 </CoverView>
           </View>:
+          <View />
+        }
+        {
+          process.env.TARO_ENV === 'h5' && this.state.showDetail ?
+          <View className="h1" onClick={ this.handleHidden }>
+            <View  className="h2">
+              <Text>
+                {showItem.name}
+              </Text>
+            </View>
+          </View>:
+          <View />
+        }
+        {
+          process.env.TARO_ENV === 'rn' && this.state.showDetail ?
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              alert("Modal has been closed.");
+            }}
+          >
+            <View style={{ marginTop: 22 }}>
+              <View>
+                <Text>Hello World!</Text>
+              </View>
+            </View>
+          </Modal>:
           <View />
         }
         {

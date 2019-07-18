@@ -118,7 +118,7 @@ class Home extends Component {
           scrollY
           className='home__wrap'
           onScrollToLower={this.loadRecommend}
-          style={{ height: (parseInt(getWindowHeight())-100)+'px'}}
+          style={{ height: (parseInt(getWindowHeight())-90)+'px'}}
         >
         
           {/* 为你推荐 */}
