@@ -1,13 +1,23 @@
 @import "@styles/theme.scss";
 
-.title {
+.title-view {
+    display: flex;
+
     background-color: $primary-color;
     color: #ffffff;
-
-    height: 80px;
-    line-height: 80px;
     
-    font-size: 30px;
+    height: 90px;
+    line-height: 90px;
+    font-size: 36px;
     font-weight: bold;
+}
+
+.title-icon {
+    width: 7%;
+    text-align: right;
+}
+
+.title {
+    width: 86%;
     text-align: center;
 }
