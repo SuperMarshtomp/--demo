@@ -18,10 +18,9 @@ export default class Recommend extends Component {
   render () {
     const { list,isList } = this.props
     return (
-      <View>
+      <View className='home-recommend'>
         {
           isList ?
-          <View className='home-recommend'>
             <View className='home-recommend__list'>
               {list.filter(item => item.type === 1).map((item) => {
                 const { id, categoryItem } = item
@@ -41,11 +40,6 @@ export default class Recommend extends Component {
                         {categoryItem.simpleDesc}
                       </Text>
                     }
-                    {/* <View className='home-recommend__list-item-info'>
-                      {!!categoryItem.limitedTag &&
-                        <Tag text={categoryItem.limitedTag} />
-                      }
-                    </View> */}
                     <View className='home-recommend__list-item-btn'>
                       <Text numberOfLines={1}>
                         立即申请
@@ -55,8 +49,38 @@ export default class Recommend extends Component {
                 )
               })}
             </View>
-          </View>
-          :<View />
+          :
+            <View className='home-recommend__list2'>
+              {list.filter(item => item.type === 1).map((item) => {
+                const { id, categoryItem } = item
+                return (
+                  <View
+                    key={id}
+                    className='home-recommend__list2-item'
+                    onClick={this.handleClick.bind(this, id)}
+                  >
+                    <Image className='home-recommend__list2-item-img' src={categoryItem.listPicUrl} />
+
+                    <View className="home-recommend__list2-item-text">
+                      <Text className='home-recommend__list2-item-text-name' numberOfLines={1}>
+                        {categoryItem.name}
+                      </Text>
+                      {!!categoryItem.simpleDesc && !categoryItem.simpleDescClose &&
+                        <Text className='home-recommend__list2-item-text-desc'>
+                          {categoryItem.simpleDesc}
+                        </Text>
+                      }
+                    </View>
+                    
+                    <View className='home-recommend__list2-item-btn'>
+                      <Text numberOfLines={1}>
+                        立即申请
+                      </Text>
+                    </View>
+                  </View>
+                )
+              })}
+            </View>
         }
       </View>
     )
