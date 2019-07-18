@@ -16,9 +16,8 @@ export default class BaseInfo extends Component {
     state = {
         cardName: '故宫-九有一心红白金卡',
         cardImage: cardImage,
-        points: ['中国银联', '白金卡', '磁条+IC+非接触', '人民币'],
-        introduce: `首款故宫LOGO联名卡，白金卡免首年年费，限时赢故宫迎春礼盒，故宫图书、
-                    文创品9折，故宫AR特效。荣时荣差，适用特殊计息`,
+        myPoints: ['中国银联', '白金卡', '磁条+IC+非接触', '人民币'],
+        introduce: '首款故宫LOGO联名卡，白金卡免首年年费，限时赢故宫迎春礼盒，故宫图书、文创品9折，故宫AR特效。荣时荣差，适用特殊计息',
         checked: false
     }
 
@@ -39,7 +38,7 @@ export default class BaseInfo extends Component {
             <View className='base-info'>
                 <Title />
                 <Change cardName={this.state.cardName} onClick={this.handleChangeClick} />
-                <CardIntro cardImage={this.state.cardImage} points={this.state.points} introduce={this.state.introduce} />
+                <CardIntro cardImage={this.state.cardImage} myPoints={this.state.myPoints} introduce={this.state.introduce} />
                 <BaseInfoInput onClick={this.handleGetVerifyClick} />
                 <Confirm onClick={this.handleConfirmClick} checked={this.state.checked} />
             </View>

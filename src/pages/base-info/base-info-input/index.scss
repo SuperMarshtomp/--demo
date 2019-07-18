@@ -20,13 +20,40 @@
 }
 
 .base-info-input-verify-btn {
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     text-align: center;
 
-    margin: 10px;
+    margin: 15px 0;
 
-    background-color: $primary-color;
+    background-color: $white;
+    border: 1px solid $primary-color;
     border-radius: 10px;
-    color: $white;
+    color: $primary-color;
+
+}
+
+
+
+
+.verify-text-input {
+    display: flex;
+    height: 80px;
+    line-height: 80px;
+    
+    font-size: 30px;
+}
+
+.verify-text-input-name {
+    width: 30%;
+}
+
+.verify-text-input-item-view {
+    width: 70%;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.verify-text-input-item {
+    height: 100%;
 }
