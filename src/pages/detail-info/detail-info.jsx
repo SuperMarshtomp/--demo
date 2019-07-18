@@ -12,8 +12,7 @@ export default class DetailInfo extends Component {
     }
 
     render () {
-        const scrollHeight = parseInt(getWindowHeight()) - 145
-        console.log(scrollHeight);
+        const scrollHeight = parseInt(getWindowHeight()) - 145 + 'px'
 
         const vStyleA = {
             height: '150px',
