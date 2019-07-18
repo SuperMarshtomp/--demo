@@ -1,0 +1,41 @@
+@import "@styles/theme.scss";
+
+.info-save {
+    // height: 200px;
+    height: 100PX;
+
+    font-size: 32px;
+    text-align: center;
+}
+
+.info-save-intro {
+    // height: 100px;
+    // line-height: 100px;
+    height: 50PX;
+    line-height: 50PX;
+
+    font-weight: bold;
+}
+
+.info-save-btn-view {
+    // height: 100px;
+    height: 50PX;
+}
+
+.info-save-btn {
+    width: 200px;
+
+    // height: 50px;
+    // line-height: 50px;
+    height: 25PX;
+    line-height: 25PX;
+
+    font-size: 28px;
+
+    margin: 0 auto;
+
+    border-radius: 10px;
+
+    background-color: $primary-color;
+    color: $white;
+}

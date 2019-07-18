@@ -1,7 +1,8 @@
 import Taro from '@tarojs/taro'
 
 const NAVIGATOR_HEIGHT = 44
-const TAB_BAR_HEIGHT = 50
+// const TAB_BAR_HEIGHT = 50
+const TAB_BAR_HEIGHT = 0
 
 /**
  * 返回屏幕可用高度
