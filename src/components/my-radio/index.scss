@@ -26,10 +26,13 @@
 }
 
 .my-radio-list-item {
+    height: fit-content;
+
     text-align: center;
     border-radius: 10px;
 
     margin: 10px 0;
+    padding: 10px 0;
 }
 
 .my-radio-list-item-border {
