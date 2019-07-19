@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image, ScrollView } from '@tarojs/components'
+import { View, Text, Image, ScrollView, CoverView } from '@tarojs/components'
 // import { Loading } from '@components'
 import { connect } from '@tarojs/redux'
 import * as actions from '@actions/home'
@@ -99,6 +99,7 @@ class Home extends Component {
     const { homeInfo, searchCount, recommend, pin } = this.props
     return (
       <View className='home'>
+        
         <Title />
         <Search isList = {this.state.isList} changeList = {this.changeList} onClick={ () => this.handleSearchClick() }/>
         <Location city='广州' />
@@ -117,7 +118,7 @@ class Home extends Component {
           scrollY
           className='home__wrap'
           onScrollToLower={this.loadRecommend}
-          style={{ height: getWindowHeight()}}
+          style={{ height: (parseInt(getWindowHeight())-90)+'px'}}
         >
         
           {/* 为你推荐 */}
