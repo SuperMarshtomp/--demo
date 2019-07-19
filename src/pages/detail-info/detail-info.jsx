@@ -26,6 +26,19 @@ export default class DetailInfo extends Component {
                     }, () => {console.log(this.state.infoLists.idCard)})
                 }
             },
+            dueDate: {
+                pickerName: '身份证到期日',
+                finished: false,
+                date: '请选择',
+                onDueDateChange: (e) => {
+                    let temp = this.state.infoLists;
+                    temp.dueDate.finished = true;
+                    temp.dueDate.date = e.detail.value;
+                    this.setState({
+                        infoLists: temp
+                    })
+                }
+            },
             mariage: {
                 radioName: '婚姻状况',
                 finished: false,

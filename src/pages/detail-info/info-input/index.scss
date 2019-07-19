@@ -22,6 +22,38 @@
     margin-top: -20px;
 }
 
+.info-input-date {
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: $white;
+    margin-bottom: 2px;
+    padding: 0 30px;
+    
+    height: 80px;
+    line-height: 80px;
+    font-size: 30px;
+}
+
+.info-input-date-name {
+    width: 35%;
+}
+
+.my-radio-icon {
+    vertical-align: text-top;
+}
+
+.info-input-date-picker {
+    width: 65%;
+    text-align: right;
+
+    color: $text-color-lighter;
+}
+
+.info-input-date-picker-black {
+    color: black;
+}
+
 .info-input-item {
     margin-bottom: 2px;
     padding-left: 30px;

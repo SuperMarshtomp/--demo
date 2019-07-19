@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Picker, Icon } from '@tarojs/components'
 import './index.scss'
 
 import MyRadio from '@components/my-radio'
@@ -22,6 +22,28 @@ export default class InfoInput extends Component {
                 </View>
 
                 <MyRadio radioInfo={infoLists.idCard} onRadioClick={() => infoLists.idCard.onIdCardClick} />
+                {
+                    infoLists.idCard.selected == 0
+                    ? 
+                    <View className='info-input-date'>
+                        <View className='info-input-date-name'>
+                            <Text>{infoLists.dueDate.pickerName}</Text>
+                            {infoLists.dueDate.finished ? <Icon size='18' type='success' className='my-radio-icon'></Icon> : <Text></Text>}
+                        </View>
+                        <View className={infoLists.dueDate.date == '请选择'
+                                        ? 'info-input-date-picker'
+                                        : 'info-input-date-picker info-input-date-picker-black'}
+                        >
+                            <Picker mode='date' onChange={infoLists.dueDate.onDueDateChange}>
+                                <View>
+                                    <Text>{infoLists.dueDate.date}</Text>
+                                </View>
+                            </Picker>
+                        </View>
+                    </View>
+                    : <View></View>
+                }
+
                 <MyRadio radioInfo={infoLists.mariage} onRadioClick={() => infoLists.mariage.onMariageClick} />
                 <MyRadio radioInfo={infoLists.education} onRadioClick={() => infoLists.education.onEducationClick} />
                 <MyRadio radioInfo={infoLists.house} onRadioClick={() => infoLists.house.onHouseClick} />
