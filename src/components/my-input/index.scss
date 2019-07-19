@@ -5,16 +5,26 @@
     height: 80px;
     line-height: 80px;
 
-    border-bottom: 1px solid $border-color;
+    background-color: $white;
+
+    // margin-bottom: 1px;
     font-size: 30px;
 }
 
+.text-input-border {
+    border-bottom: 1px solid $border-color;
+}
+
 .text-input-name {
-    width: 30%;
+    width: 35%;
+}
+
+.my-radio-icon {
+    vertical-align: text-top;
 }
 
 .text-input-item-view {
-    width: 70%;
+    width: 65%;
     text-align: right;
     margin-right: 30px;
 }

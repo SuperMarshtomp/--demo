@@ -26,6 +26,19 @@ export default class DetailInfo extends Component {
                     }, () => {console.log(this.state.infoLists.idCard)})
                 }
             },
+            dueDate: {
+                pickerName: '身份证到期日',
+                finished: false,
+                date: '请选择',
+                onDueDateChange: (e) => {
+                    let temp = this.state.infoLists;
+                    temp.dueDate.finished = true;
+                    temp.dueDate.date = e.detail.value;
+                    this.setState({
+                        infoLists: temp
+                    })
+                }
+            },
             mariage: {
                 radioName: '婚姻状况',
                 finished: false,
@@ -101,6 +114,21 @@ export default class DetailInfo extends Component {
                     }, () => {console.log(this.state.infoLists.companyCharacter)})
                 }
             },
+            companyName: {
+                inputName: '单位名称',
+                finished: false,
+                onCompanyNameBlur: (e) => {
+                    let temp = this.state.infoLists;
+                    if (e.currentTarget.value != '') {
+                        temp.companyName.finished = true;
+                    } else {
+                        temp.companyName.finished = false;
+                    }
+                    this.setState({
+                        infoLists: temp
+                    })
+                }
+            },
             level: {
                 radioName: '职务',
                 finished: false,
@@ -114,6 +142,36 @@ export default class DetailInfo extends Component {
                     this.setState({
                         infoLists: temp
                     }, () => {console.log(this.state.infoLists.level)})
+                }
+            },
+            contactsName: {
+                inputName: '联系人姓名',
+                finished: false,
+                onContactsNameBlur: (e) => {
+                    let temp = this.state.infoLists;
+                    if (e.currentTarget.value != '') {
+                        temp.contactsName.finished = true;
+                    } else {
+                        temp.contactsName.finished = false;
+                    }
+                    this.setState({
+                        infoLists: temp
+                    })
+                }
+            },
+            contactsPhone: {
+                inputName: '联系人手机号',
+                finished: false,
+                onContactsPhoneBlur: (e) => {
+                    let temp = this.state.infoLists;
+                    if (e.currentTarget.value != '') {
+                        temp.contactsPhone.finished = true;
+                    } else {
+                        temp.contactsPhone.finished = false;
+                    }
+                    this.setState({
+                        infoLists: temp
+                    })
                 }
             },
             relationship: {

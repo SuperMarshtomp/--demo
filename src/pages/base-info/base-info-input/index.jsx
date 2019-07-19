@@ -9,9 +9,9 @@ export default class BaseInfoInput extends Component {
         return (
             <View className='base-info-input-view'>
                 <View className='base-info-input'>
-                    <MyInput inputName='姓名' type='text' />
-                    <MyInput inputName='身份证号' type='idcard' />
-                    <MyInput inputName='手机号' type='number' />
+                    <MyInput inputName='姓名' type='text' hasBorder />
+                    <MyInput inputName='身份证号' type='idcard' hasBorder />
+                    <MyInput inputName='手机号' type='number' hasBorder />
                     <View className='base-info-input-verify'>
                         {/* <MyInput inputName='短信验证码' type='number' /> */}
                         <View className='verify-text-input'>

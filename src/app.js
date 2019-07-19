@@ -21,8 +21,8 @@ class App extends Component {
     pages: [
       // 'pages/index/index'
       'pages/detail-info/detail-info',
-      'pages/home/home',
       'pages/base-info/base-info',
+      'pages/home/home',
     ],
     window: {
       backgroundTextStyle: 'light',
