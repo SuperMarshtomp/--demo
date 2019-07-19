@@ -3,14 +3,15 @@
 .my-radio {
     padding: 0 30px;
     background-color: $white;
-    border-bottom: 1px solid $border-color;
+    // border-bottom: 1px solid $border-color;
+    margin-bottom: 2px;
     padding-bottom: 30px;
 }
 
 .my-radio-name {
     height: 80px;
     line-height: 80px;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 .my-radio-icon {
