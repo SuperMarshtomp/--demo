@@ -111,7 +111,7 @@ export default class Recommend extends Component {
                       className='home-recommend__list-item-btn'
                       onClick={this.handleClick.bind(this, id)}
                     >
-                      <Text numberOfLines={1}>
+                      <Text className='home-recommend__list-item-btn-txt' numberOfLines={1}>
                         立即申请
                       </Text>
                     </View>
@@ -141,7 +141,7 @@ export default class Recommend extends Component {
                     </View>
                     
                     <View className='home-recommend__list2-item-btn'  onClick={this.handleClick.bind(this, id)}>
-                      <Text numberOfLines={1}>
+                      <Text className='home-recommend__list2-item-btn-txt' numberOfLines={1}>
                         立即申请
                       </Text>
                     </View>
