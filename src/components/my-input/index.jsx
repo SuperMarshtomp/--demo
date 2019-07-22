@@ -9,15 +9,15 @@ export default class MyInput extends Component {
                 <View className='text-input-name'>
                     <Text>
                         {this.props.inputName}
-                        {this.props.finished ? <Icon size='18' type='success' className='my-radio-icon'></Icon> : <Text></Text>}
                     </Text>
+                    {this.props.finished ? <Icon size='18' type='success' className='my-radio-icon'></Icon> : <Text></Text>}
                 </View>
                 <View className='text-input-item-view'>
                     <Input 
                       className='text-input-item' 
                       type={this.props.type} 
                       placeholder={'请输入' + this.props.inputName} 
-                      onBlur={this.props.onBlur()}
+                      onInput={this.props.onInput}
                     />
                 </View>
             </View>
