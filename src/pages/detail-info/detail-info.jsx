@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, ScrollView, Text, Picker, Icon } from '@tarojs/components'
+import { View, ScrollView, Text, Picker, Icon, Input } from '@tarojs/components'
 import './detail-info.scss'
 
 import Title from '@components/title'
@@ -8,6 +8,8 @@ import { getWindowHeight } from '@utils/style'
 
 import MyInput from '@components/my-input'
 import MyRadio from '@components/my-radio'
+
+import provice from '@utils/provice'
 
 export default class DetailInfo extends Component {
     state = {
@@ -76,6 +78,14 @@ export default class DetailInfo extends Component {
                 }, () => {console.log(this.state.house)})
             }
         },
+        houseAddress: {
+            pickerName: '住宅地址',
+            finished: false,
+            address: '请选择省市区',
+            addressIndex: [0, 0, 0],
+            addressRange: [],
+            detailAddress: ''
+        },
         job: {
             radioName: '职业',
             finished: false,
@@ -133,6 +143,37 @@ export default class DetailInfo extends Component {
                 }
                 this.setState({
                     companyName: temp
+                })
+            }
+        },
+        companyAddress: {
+            pickerName: '单位地址',
+            finished: false,
+            address: '请选择省市区',
+            addressIndex: [0, 0, 0],
+            addressRange: [],
+            detailAddress: ''
+        },
+        companyPhone: {
+            inputName: '单位电话',
+            inputSubName: '(分机号选填)',
+            finished: false,
+            prefix: '',
+            phone: '',
+            suffix: ''
+        },
+        income: {
+            inputName: '税前年收入',
+            finished: false,
+            onIncomeInput: (e) => {
+                let temp = this.state.income;
+                if (e.currentTarget.value != '') {
+                    temp.finished = true;
+                } else {
+                    temp.finished = false;
+                }
+                this.setState({
+                    income: temp
                 })
             }
         },
@@ -198,6 +239,41 @@ export default class DetailInfo extends Component {
         }
     }
 
+    componentWillMount() {
+        // 地区选择器初始化
+        let houseAddress = this.state.houseAddress;
+        let addressRange = houseAddress.addressRange;
+
+        let temp = [];
+        for (let i = 0; i < provice.length; i++) {
+            temp.push(provice[i].name);
+        }
+        addressRange.push(temp);
+        temp = [];
+        for (let i = 0; i < provice[0].city.length; i++) {
+            temp.push(provice[0].city[i].name);
+        }
+        addressRange.push(temp);
+        temp = [];
+        for (let i = 0; i < provice[0].city[0].districtAndCounty.length; i++) {
+            temp.push(provice[0].city[0].districtAndCounty[i]);
+        }
+        addressRange.push(temp);
+        houseAddress.addressRange = addressRange;
+
+        this.setState({
+            houseAddress: houseAddress
+        })
+
+
+        // 简单复用住宅地址
+        let companyAddress = this.state.companyAddress;
+        companyAddress.addressRange = addressRange.slice(0);
+        this.setState({
+            companyAddress: companyAddress
+        })
+    }
+
     handleSaveClick = () => {
         console.log('handleSaveClick');
     }
@@ -211,8 +287,173 @@ export default class DetailInfo extends Component {
         })
     }
 
+    onHouseAddressChange = (e) => {
+        let temp = this.state.houseAddress;
+        temp.addressIndex = e.detail.value;
+        temp.address = temp.addressRange[0][temp.addressIndex[0]] + ' - ' + temp.addressRange[1][temp.addressIndex[1]] + ' - ' + temp.addressRange[2][temp.addressIndex[2]];
+        this.setState({
+            houseAddress: temp
+        })
+    }
+
+    onHouseAddressColumnChange = (e) => {
+        let temp = this.state.houseAddress;
+        let column = e.detail.column;
+        let row = e.detail.value;
+
+        temp.addressIndex[column] = row;
+
+        switch (column) {
+            case 0:
+                let t1 = [];
+                let t2 = [];
+                for (let i = 0; i < provice[row].city.length; i++) {
+                    t1.push(provice[row].city[i].name);
+                }
+                for (let i = 0; i < provice[row].city[0].districtAndCounty.length; i++) {
+                    t2.push(provice[row].city[0].districtAndCounty[i]);
+                }
+                temp.addressIndex[1] = 0;
+                temp.addressIndex[2] = 0;
+                temp.addressRange[1] = t1;
+                temp.addressRange[2] = t2;
+                break;
+            case 1:
+                let t = [];
+                for (let i = 0; i < provice[temp.addressIndex[0]].city[row].districtAndCounty.length; i++) {
+                    t.push(provice[temp.addressIndex[0]].city[row].districtAndCounty[i]);
+                }
+                temp.addressIndex[2] = 0;
+                temp.addressRange[2] = t;
+                break;
+            case 2:
+                break;
+        }
+
+        this.setState({
+            houseAddress: temp
+        })
+    }
+
+    onHouseDetailAddressInput = (e) => {
+        let temp = this.state.houseAddress;
+        if (e.currentTarget.value != '' && temp.address != '请选择省市区') {
+            temp.finished = true;
+        } else {
+            temp.finished = false;
+        }
+        this.setState({
+            houseAddress: temp
+        })
+    }
+
+    // 简单复用住宅地址
+    onCompanyAddressChange = (e) => {
+        let temp = this.state.companyAddress;
+        temp.addressIndex = e.detail.value;
+        temp.address = temp.addressRange[0][temp.addressIndex[0]] + ' - ' + temp.addressRange[1][temp.addressIndex[1]] + ' - ' + temp.addressRange[2][temp.addressIndex[2]];
+        this.setState({
+            companyAddress: temp
+        })
+    }
+
+    onCompanyAddressColumnChange = (e) => {
+        let temp = this.state.companyAddress;
+        let column = e.detail.column;
+        let row = e.detail.value;
+
+        temp.addressIndex[column] = row;
+
+        switch (column) {
+            case 0:
+                let t1 = [];
+                let t2 = [];
+                for (let i = 0; i < provice[row].city.length; i++) {
+                    t1.push(provice[row].city[i].name);
+                }
+                for (let i = 0; i < provice[row].city[0].districtAndCounty.length; i++) {
+                    t2.push(provice[row].city[0].districtAndCounty[i]);
+                }
+                temp.addressIndex[1] = 0;
+                temp.addressIndex[2] = 0;
+                temp.addressRange[1] = t1;
+                temp.addressRange[2] = t2;
+                break;
+            case 1:
+                let t = [];
+                for (let i = 0; i < provice[temp.addressIndex[0]].city[row].districtAndCounty.length; i++) {
+                    t.push(provice[temp.addressIndex[0]].city[row].districtAndCounty[i]);
+                }
+                temp.addressIndex[2] = 0;
+                temp.addressRange[2] = t;
+                break;
+            case 2:
+                break;
+        }
+
+        this.setState({
+            companyAddress: temp
+        })
+    }
+
+    onCompanyDetailAddressInput = (e) => {
+        let temp = this.state.companyAddress;
+        if (e.currentTarget.value != '' && temp.address != '请选择省市区') {
+            temp.finished = true;
+        } else {
+            temp.finished = false;
+        }
+        this.setState({
+            companyAddress: temp
+        })
+    }
+    // 简单复用住宅地址
+
+
+    // 单位电话
+    onPrefixInput = (e) => {
+        let temp = this.state.companyPhone;
+        temp.prefix = e.currentTarget.value;
+        if (temp.prefix != '' && temp.phone != '' && temp.suffix != '') {
+            temp.finished = true;
+        } else {
+            temp.finished = false;
+        }
+        this.setState({
+            companyPhone: temp
+        })
+    }
+    onCompanyPhoneInput = (e) => {
+        let temp = this.state.companyPhone;
+        temp.phone = e.currentTarget.value;
+        if (temp.prefix != '' && temp.phone != '' && temp.suffix != '') {
+            temp.finished = true;
+        } else {
+            temp.finished = false;
+        }
+        this.setState({
+            companyPhone: temp
+        })
+    }
+    onSuffixInput = (e) => {
+        let temp = this.state.companyPhone;
+        temp.suffix = e.currentTarget.value;
+        if (temp.prefix != '' && temp.phone != '' && temp.suffix != '') {
+            temp.finished = true;
+        } else {
+            temp.finished = false;
+        }
+        this.setState({
+            companyPhone: temp
+        })
+    }
+
+    onConfirmClick = () => {
+        console.log('onConfirmClick');
+    }
+
     render () {
-        const scrollHeight = parseInt(getWindowHeight()) - 145 + 'px'
+        const scrollHeight = parseInt(getWindowHeight()) - 145 + 'px';
 
         return (
             <View className='detail-info'>
@@ -255,10 +496,48 @@ export default class DetailInfo extends Component {
 
                         <MyRadio radioInfo={this.state.mariage} />
                         <MyRadio radioInfo={this.state.education} />
+
                         <MyRadio radioInfo={this.state.house} />
+                        <View className='info-input-house-address'>
+                            <View className='info-input-house-address-title'>
+                                <Text>{this.state.houseAddress.pickerName}</Text>
+                                {this.state.houseAddress.finished ? <Icon size='18' type='success' className='my-radio-icon'></Icon> : <Text></Text>}
+                            </View>
+                            <View className={this.state.houseAddress.address == '请选择省市区'
+                                            ? 'info-input-house-address-picker'
+                                            : 'info-input-house-address-picker-black'}
+                            >
+                                <Picker
+                                  mode='multiSelector' 
+                                  onChange={this.onHouseAddressChange}
+                                  onColumnChange={this.onHouseAddressColumnChange}
+                                  range={this.state.houseAddress.addressRange}
+                                  value={this.state.houseAddress.addressIndex}
+                                >
+                                    <View className='info-input-house-address-selected'>
+                                        <View className='info-input-house-address-selected-name'>
+                                            <Text>{this.state.houseAddress.address}</Text>
+                                        </View>
+                                        <View className='info-input-house-address-selected-icon'>
+                                            <Text>{'>'}</Text>
+                                        </View>
+                                    </View>
+                                </Picker>
+                            </View>
+                            <View>
+                                <Input 
+                                  className='info-input-house-address-input' 
+                                  type='text' 
+                                  placeholder='请具体到门牌号且不少于3个字'
+                                  onInput={this.onHouseDetailAddressInput}
+                                />
+                            </View>
+                        </View>
+
                         <MyRadio radioInfo={this.state.job} />
                         <MyRadio radioInfo={this.state.companyCharacter} />
                         <MyRadio radioInfo={this.state.level} />
+
                         <View className='info-input-item'>
                             <MyInput 
                               inputName={this.state.companyName.inputName} 
@@ -267,6 +546,101 @@ export default class DetailInfo extends Component {
                               onInput={this.state.companyName.onCompanyNameInput}
                             />
                         </View>
+                        {/* 单位地址--简单复用住宅地址 */}
+                        <View className='info-input-house-address'>
+                            <View className='info-input-house-address-title'>
+                                <Text>{this.state.companyAddress.pickerName}</Text>
+                                {this.state.companyAddress.finished ? <Icon size='18' type='success' className='my-radio-icon'></Icon> : <Text></Text>}
+                            </View>
+                            <View className={this.state.companyAddress.address == '请选择省市区'
+                                            ? 'info-input-house-address-picker'
+                                            : 'info-input-house-address-picker-black'}
+                            >
+                                <Picker
+                                  mode='multiSelector' 
+                                  onChange={this.onCompanyAddressChange}
+                                  onColumnChange={this.onCompanyAddressColumnChange}
+                                  range={this.state.companyAddress.addressRange}
+                                  value={this.state.companyAddress.addressIndex}
+                                >
+                                    <View className='info-input-house-address-selected'>
+                                        <View className='info-input-house-address-selected-name'>
+                                            <Text>{this.state.companyAddress.address}</Text>
+                                        </View>
+                                        <View className='info-input-house-address-selected-icon'>
+                                            <Text>{'>'}</Text>
+                                        </View>
+                                    </View>
+                                </Picker>
+                            </View>
+                            <View>
+                                <Input 
+                                  className='info-input-house-address-input' 
+                                  type='text' 
+                                  placeholder='请具体到门牌号且不少于3个字'
+                                  onInput={this.onCompanyDetailAddressInput}
+                                />
+                            </View>
+                        </View>
+                        {/* 单位地址--简单复用住宅地址 */}
+
+                        {/* 单位电话 */}
+                        <View className='info-input-company-phone'>
+                            <View className='info-input-company-phone-name'>
+                                <View>
+                                    <Text>{this.state.companyPhone.inputName}</Text>
+                                    {this.state.companyPhone.finished ? <Icon size='18' type='success' className='my-radio-icon'></Icon> : <Text></Text>}
+                                </View>
+                                <View className='info-input-company-phone-name-sub'>
+                                    <Text>{this.state.companyPhone.inputSubName}</Text>
+                                </View>
+                            </View>
+                            <View className='info-input-company-phone-prefix-view'>
+                                <Input 
+                                  type='number' 
+                                  placeholder='区号' 
+                                  className='info-input-company-phone-prefix' 
+                                  onInput={this.onPrefixInput}
+                                />
+                            </View>
+                            <View className='info-input-company-phone-divide'>
+                                <Text>-</Text>
+                            </View>
+                            <View className='info-input-company-phone-phone-view'>
+                                <Input 
+                                  type='number' 
+                                  placeholder='电话号' 
+                                  className='info-input-company-phone-phone' 
+                                  onInput={this.onCompanyPhoneInput}
+                                />
+                            </View>
+                            <View className='info-input-company-phone-divide'>
+                                <Text>-</Text>
+                            </View>
+                            <View className='info-input-company-phone-suffix-view'>
+                                <Input 
+                                  type='number' 
+                                  placeholder='分机号' 
+                                  className='info-input-company-phone-suffix' 
+                                  onInput={this.onSuffixInput}
+                                />
+                            </View>
+                        </View>
+
+                        {/* 税前年收入 */}
+                        <View className='info-input-item info-input-income'>
+                            <View className='info-input-income-input'>
+                                <MyInput 
+                                  inputName={this.state.income.inputName}
+                                  type='number' 
+                                  finished={this.state.income.finished}
+                                  onInput={this.state.income.onIncomeInput}
+                                  noPlaceholder
+                                />
+                            </View>
+                            <View className='info-input-income-unit'><Text>万元</Text></View>
+                        </View>
+
                         <View className='info-input-item'>
                             <MyInput 
                               inputName={this.state.contactsName.inputName} 
@@ -285,6 +659,13 @@ export default class DetailInfo extends Component {
                         </View>
                         <MyRadio radioInfo={this.state.relationship} />
                         <MyRadio radioInfo={this.state.postalAddress} />
+
+                        {/* 提交申请按钮 */}
+                        <View className='info-input-confirm-btn' onClick={this.onConfirmClick}>
+                            <Text>
+                                提交申请
+                            </Text>
+                        </View>
                     </View>
                 </ScrollView>
             </View>
