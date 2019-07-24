@@ -1,0 +1,101 @@
+@import "@styles/theme.scss";
+
+.again {
+    background-color: $backgorund-color;
+}
+
+.again-white-block {
+    height: 20px;
+    background-color: $white;
+    margin-bottom: 2px;
+}
+
+.again-tip-view {
+    height: 260px;
+
+    background-color: $white;
+    font-size: 28px;
+
+    padding: 0 30px;
+    padding-top: 40px;
+
+    margin-bottom: 20px;
+}
+
+.again-tip-name {
+    height: 60px;
+    line-height: 60px;
+}
+
+.again-tip {
+    height: 160px;
+
+    text-indent: 2em;
+    font-size: 26px;
+    &-blue {
+        color: $blue;
+    }
+}
+
+.again-radio {
+    padding: 0 30px;
+    background-color: $white;
+}
+
+.again-radio-name {
+    height: 80px;
+    line-height: 80px;
+    font-size: 30px;
+}
+
+.again-radio-icon {
+    vertical-align: text-top;
+}
+
+.again-radio-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    font-size: 27px;
+}
+
+.again-radio-list-item {
+    height: fit-content;
+    width: 45%;
+
+    border: 1px solid $text-color-light;
+
+    text-align: center;
+    border-radius: 10px;
+
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.again-radio-list-item-red {
+    border-color: $primary-color;
+    color: $primary-color;
+}
+
+.again-address {
+    height: 40px;
+    line-height: 30px;
+    padding: 0 30px;
+    padding-bottom: 10px;
+    background-color: $white;
+    font-size: 22px;
+}
+
+.again-confirm-btn {
+
+    height: 80px;
+    line-height: 80px;
+
+    background-color: $primary-color;
+    color: $white;
+
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
+}

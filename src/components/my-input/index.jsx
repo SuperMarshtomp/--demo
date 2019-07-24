@@ -16,7 +16,8 @@ export default class MyInput extends Component {
                     <Input 
                       className='text-input-item' 
                       type={this.props.type} 
-                      placeholder={'请输入' + this.props.inputName} 
+                    //   placeholder={'请输入' + this.props.inputName} 
+                      placeholder={this.props.noPlaceholder ? '' : '请输入' + this.props.inputName}
                       onInput={this.props.onInput}
                     />
                 </View>

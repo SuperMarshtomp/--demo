@@ -20,6 +20,8 @@ class App extends Component {
   config = {
     pages: [
       // 'pages/index/index'
+      'pages/again/again',
+      'pages/success-info/success-info',
       'pages/detail-info/detail-info',
       'pages/base-info/base-info',
       'pages/home/home',

@@ -14,6 +14,7 @@
 
 .info-input-pinyin-content {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     height: 80px;
     line-height: 80px;
@@ -28,6 +29,7 @@
 
 .info-input-date {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     
     background-color: $white;
@@ -58,9 +60,129 @@
     color: black;
 }
 
+.info-input-house-address {
+    background-color: $white;
+    margin-bottom: 2px;
+    padding: 0 30px;
+    height: 240px;
+    line-height: 80px;
+    font-size: 30px;
+    &-title {
+        height: 80px;
+        line-height: 80px;
+    }
+    &-picker {
+        color: $text-color-lighter;
+    }
+    &-picker-black {
+        color: black;
+    }
+    &-selected {
+        display: flex;
+        flex-direction: row;
+    }
+    &-selected-name {
+        width: 90%;
+    }
+    &-selected-icon {
+        width: 10%;
+        text-align: right;
+        font-size: 45px;
+    }
+    &-input {
+        height: 80px;
+        line-height: 80px;
+        text-align: right;
+    }
+}
+
 .info-input-item {
     margin-bottom: 2px;
     padding-left: 30px;
 
     background-color: $white;
+}
+
+.info-input-income {
+    display: flex;
+    flex-direction: row;
+    
+    height: 80px;
+    line-height: 80px;
+    font-size: 30px;
+    padding-right: 30px;
+
+    &-input {
+        width: 90%;
+    }
+    &-unit {
+        text-align: right;
+        width: 10%;
+    }
+}
+
+.info-input-company-phone {
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 2px;
+    padding: 0 30px;
+    background-color: $white;
+
+    font-size: 30px;
+
+    &-name {
+        width: 25%;
+        height: 100px;
+        padding-top: 10px;
+    }
+    &-name-sub {
+        font-size: 20px;
+        vertical-align: top;
+    }
+    &-prefix-view {
+        width: 11%;
+    }
+    &-prefix {
+        height: 100px;
+        line-height: 100px;
+        text-align: right;
+    }
+    &-phone-view {
+        width: 16%;
+    }
+    &-phone {
+        height: 100px;
+        line-height: 100px;
+        text-align: right;
+    }
+    &-suffix-view {
+        width: 16%;
+    }
+    &-suffix {
+        height: 100px;
+        line-height: 100px;
+        text-align: right;
+    }
+
+    &-divide {
+        width: 16%;
+        text-align: center;
+        height: 100px;
+        line-height: 100px;
+    }
+}
+
+.info-input-confirm-btn {
+    margin: 20px;
+
+    height: 80px;
+    line-height: 80px;
+
+    background-color: $primary-color;
+    color: $white;
+
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
 }

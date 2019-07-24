@@ -1,0 +1,80 @@
+@import "@styles/theme.scss";
+
+.success-submit {
+    background-color: $backgorund-color;
+}
+
+.success-submit-tip {
+    height: 200px;
+    background-color: $white;
+    text-align: center;
+
+    color: $icon-color;
+
+    &-icon {
+        height: 120px;
+        padding-top: 40px;
+    }
+    &-text {
+        height: 80px;
+        line-height: 80px;
+        font-size: 36px;
+        font-weight: bold;
+    }
+}
+
+.success-submit-image-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    height: 100px;
+    line-height: 100px;
+    font-size: 36px;
+    color: $text-color-lighter;
+}
+
+.success-submit-image {
+    vertical-align: text-top;
+}
+
+.success-submit-number {
+    display: flex;
+    flex-direction: row;
+
+    background-color: $white;
+
+    height: 100px;
+    line-height: 100px;
+    padding: 0 30px;
+    font-size: 26px;
+    margin-bottom: 2px;
+}
+
+
+.success-submit-describe-view{
+    background-color: $white;
+    padding: 20px 0;
+}
+
+.success-submit-describe {
+    display: flex;
+    flex-direction: row;
+
+    height: 60px;
+    line-height: 60px;
+    padding: 0 30px;
+    font-size: 26px;
+}
+
+.success-submit-left {
+    width: 30%;
+}
+
+.success-submit-center {
+    width: 60%;
+}
+
+.success-submit-right {
+    width: 10%;
+}
