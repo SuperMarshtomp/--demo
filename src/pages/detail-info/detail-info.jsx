@@ -450,6 +450,9 @@ export default class DetailInfo extends Component {
 
     onConfirmClick = () => {
         console.log('onConfirmClick');
+        Taro.navigateTo({
+            url: '/pages/success-info/success-info'
+        })
     }
 
     render () {
