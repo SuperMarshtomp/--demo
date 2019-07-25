@@ -59,7 +59,7 @@ export default class Again extends Component {
                     <View className='again-radio'>
                         <View className='again-radio-name'>
                             <Text>{this.state.radioInfo.radioName}</Text>
-                            <Icon size='18' type='info' className='again-radio-icon' color='#ff204d'></Icon>
+                            <Icon size='15' type='info' className='again-radio-icon' color='#ff204d'></Icon>
                         </View>
                         <View className='again-radio-list'>
                             {
