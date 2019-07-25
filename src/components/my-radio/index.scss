@@ -20,6 +20,7 @@
 
 .my-radio-list {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     
@@ -27,6 +28,7 @@
 }
 
 .my-radio-list-item {
+    // rn不支持
     height: fit-content;
 
     text-align: center;
