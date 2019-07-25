@@ -45,7 +45,7 @@ export default class MyRadio extends Component {
                                 ?
                                 (
                                     <View
-                                      onClick={() => {this.props.onRadioClick(index)}} 
+                                      onClick={() => {this.props.onRadioClick(index, radioInfo.name)}} 
                                       key={item} 
                                       className={radioInfo.selected != index 
                                                 ? 'my-radio-list-item my-radio-list-item-border my-radio-list-item-' + listLength

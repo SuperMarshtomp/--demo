@@ -14,6 +14,7 @@ import provice from '@utils/provice'
 export default class DetailInfo extends Component {
     state = {
         idCard: {
+            name: 'idCard',
             radioName: '身份证到期日',
             radioList: ['手动输入', '长期有效'],
             finished: false,
@@ -25,24 +26,28 @@ export default class DetailInfo extends Component {
             date: '请选择'
         },
         mariage: {
+            name: 'mariage',
             radioName: '婚姻状况',
             finished: false,
             radioList: ['已婚', '未婚', '其他'],
             selected: -1
         },
         education: {
+            name: 'education',
             radioName: '教育程度',
             finished: false,
             radioList: ['专科及以下', '本科', '硕士', '博士及以上'],
             selected: -1
         },
         house: {
+            name: 'house',
             radioName: '住宅状况',
             finished: false,
             radioList: ['全款购房', '贷款购房', '租房', '其他'],
             selected: -1
         },
         houseAddress: {
+            name: 'houseAddress',
             pickerName: '住宅地址',
             finished: false,
             address: '请选择省市区',
@@ -51,18 +56,21 @@ export default class DetailInfo extends Component {
             detailAddress: ''
         },
         job: {
+            name: 'job',
             radioName: '职业',
             finished: false,
             radioList: ['公司职员', '公务员', '事业单位员工', '金融单位员工', '军人', '学生', '自由职业者'],
             selected: -1
         },
         companyCharacter: {
+            name: 'companyCharacter',
             radioName: '单位性质',
             finished: false,
             radioList: ['国有经济', '集体经济', '私营/民营', '股份制', '三资'],
             selected: -1
         },
         level: {
+            name: 'level',
             radioName: '职务',
             finished: false,
             radioList: ['科员级/职员', '科级/部门经理', '县处级/总经理', '厅局级及以上/企业负责人', '其他'],
@@ -70,20 +78,10 @@ export default class DetailInfo extends Component {
         },
         companyName: {
             inputName: '单位名称',
-            finished: false,
-            onCompanyNameInput: (e) => {
-                let temp = this.state.companyName;
-                if (e.currentTarget.value != '') {
-                    temp.finished = true;
-                } else {
-                    temp.finished = false;
-                }
-                this.setState({
-                    companyName: temp
-                })
-            }
+            finished: false
         },
         companyAddress: {
+            name: 'companyAddress',
             pickerName: '单位地址',
             finished: false,
             address: '请选择省市区',
@@ -101,56 +99,25 @@ export default class DetailInfo extends Component {
         },
         income: {
             inputName: '税前年收入',
-            finished: false,
-            onIncomeInput: (e) => {
-                let temp = this.state.income;
-                if (e.currentTarget.value != '') {
-                    temp.finished = true;
-                } else {
-                    temp.finished = false;
-                }
-                this.setState({
-                    income: temp
-                })
-            }
+            finished: false
         },
         contactsName: {
             inputName: '联系人姓名',
-            finished: false,
-            onContactsNameInput: (e) => {
-                let temp = this.state.contactsName;
-                if (e.currentTarget.value != '') {
-                    temp.finished = true;
-                } else {
-                    temp.finished = false;
-                }
-                this.setState({
-                    contactsName: temp
-                })
-            }
+            finished: false
         },
         contactsPhone: {
             inputName: '联系人手机号',
-            finished: false,
-            onContactsPhoneInput: (e) => {
-                let temp = this.state.contactsPhone;
-                if (e.currentTarget.value != '') {
-                    temp.finished = true;
-                } else {
-                    temp.finished = false;
-                }
-                this.setState({
-                    contactsPhone: temp
-                })
-            }
+            finished: false
         },
         relationship: {
+            name: 'relationship',
             radioName: '与申请人关系',
             finished: false,
             radioList: ['夫妻', '父子', '母子', '兄弟姐妹', '同事', '朋友'],
             selected: -1
         },
         postalAddress: {
+            name: 'postalAddress',
             radioName: '卡片邮寄地址',
             finished: false,
             radioList: ['单位地址', '住宅地址'],
@@ -197,14 +164,57 @@ export default class DetailInfo extends Component {
         console.log('handleSaveClick');
     }
 
-    onIdCardRadioClick = (index) => {
-        // console.log('onIdCardClick-' + e.currentTarget.title);
-        let temp = this.state.idCard;
+    onRadioClick = (index, option) => {
+        let temp = this.state[option];
         temp.selected = parseInt(index);
         temp.finished = true;
-        this.setState({
-            idCard: temp
-        }, () => {console.log(this.state.idCard)})
+        switch (option) {
+            case 'idCard':
+                this.setState({
+                    idCard: temp
+                }, () => {console.log(this.state.idCard)});
+                break;
+            case 'mariage':
+                this.setState({
+                    mariage: temp
+                }, () => {console.log(this.state.mariage)});
+                break;
+            case 'education':
+                this.setState({
+                    education: temp
+                }, () => {console.log(this.state.education)});
+                break;
+            case 'house':
+                this.setState({
+                    house: temp
+                }, () => {console.log(this.state.house)});
+                break;
+            case 'job':
+                this.setState({
+                    job: temp
+                }, () => {console.log(this.state.job)});
+                break;
+            case 'companyCharacter':
+                this.setState({
+                    companyCharacter: temp
+                }, () => {console.log(this.state.companyCharacter)});
+                break;
+            case 'level':
+                this.setState({
+                    level: temp
+                }, () => {console.log(this.state.level)});
+                break;
+            case 'relationship':
+                this.setState({
+                    relationship: temp
+                }, () => {console.log(this.state.relationship)});
+                break;
+            case 'postalAddress':
+                this.setState({
+                    postalAddress: temp
+                }, () => {console.log(this.state.postalAddress)});
+                break;
+        }
     }
 
     onDueDateChange = (e) => {
@@ -216,47 +226,23 @@ export default class DetailInfo extends Component {
         })
     }
 
-    onMariageRadioClick = (index) => {
-        // console.log('onMariageClick-' + e.currentTarget.title);
-        let temp = this.state.mariage;
-        temp.selected = parseInt(index);
-        temp.finished = true;
-        this.setState({
-            mariage: temp
-        }, () => {console.log(this.state.mariage)})
-    }
-
-    onEducationRadioClick = (index) => {
-        // console.log('onEducationClick-' + e.currentTarget.title);
-        let temp = this.state.education;
-        temp.selected = parseInt(index);
-        temp.finished = true;
-        this.setState({
-            education: temp
-        }, () => {console.log(this.state.education)})
-    }
-
-    onHouseRadioClick = (index) => {
-        // console.log('onHouseClick-' + e.currentTarget.title);
-        let temp = this.state.house;
-        temp.selected = parseInt(index);
-        temp.finished = true;
-        this.setState({
-            house: temp
-        }, () => {console.log(this.state.house)})
-    }
-
-    onHouseAddressChange = (e) => {
-        let temp = this.state.houseAddress;
+    onHouseAddressChange = (option, e) => {
+        let temp = this.state[option];
         temp.addressIndex = e.detail.value;
         temp.address = temp.addressRange[0][temp.addressIndex[0]] + ' - ' + temp.addressRange[1][temp.addressIndex[1]] + ' - ' + temp.addressRange[2][temp.addressIndex[2]];
-        this.setState({
-            houseAddress: temp
-        })
+        if (option == 'houseAddress') {
+            this.setState({
+                houseAddress: temp
+            }, () => { console.log(this.state.houseAddress) })
+        } else {
+            this.setState({
+                companyAddress: temp
+            }, () => { console.log(this.state.companyAddress) })
+        }
     }
 
-    onHouseAddressColumnChange = (e) => {
-        let temp = this.state.houseAddress;
+    onHouseAddressColumnChange = (option, e) => {
+        let temp = this.state[option];
         let column = e.detail.column;
         let row = e.detail.value;
 
@@ -289,117 +275,70 @@ export default class DetailInfo extends Component {
                 break;
         }
 
-        this.setState({
-            houseAddress: temp
-        })
+        if (option == 'houseAddress') {
+            this.setState({
+                houseAddress: temp
+            }, () => { console.log(this.state.houseAddress) })
+        } else {
+            this.setState({
+                companyAddress: temp
+            }, () => { console.log(this.state.companyAddress) })
+        }
     }
 
-    onHouseDetailAddressInput = (e) => {
-        let temp = this.state.houseAddress;
+    onHouseDetailAddressInput = (option, e) => {
+        let temp = this.state[option];
         if (e.currentTarget.value != '' && temp.address != '请选择省市区') {
             temp.finished = true;
         } else {
             temp.finished = false;
         }
-        this.setState({
-            houseAddress: temp
-        })
-    }
-
-
-    onJobRadioClick = (index) => {
-        // console.log('onJobClick-' + e.currentTarget.title);
-        let temp = this.state.job;
-        temp.selected = parseInt(index);
-        temp.finished = true;
-        this.setState({
-            job: temp
-        }, () => {console.log(this.state.job)})
-    }
-
-    onCompanyCharacterRadioClick = (index) => {
-        // console.log('onCompanyCharacterClick-' + e.currentTarget.title);
-        let temp = this.state.companyCharacter;
-        temp.selected = parseInt(index);
-        temp.finished = true;
-        this.setState({
-            companyCharacter: temp
-        }, () => {console.log(this.state.companyCharacter)})
-    }
-
-    onLevelRadioClick = (index) => {
-        // console.log('onLevelClick-' + e.currentTarget.title);
-        let temp = this.state.level;
-        temp.selected = parseInt(index);
-        temp.finished = true;
-        this.setState({
-            level: temp
-        }, () => {console.log(this.state.level)})
-    }
-
-    // 简单复用住宅地址
-    onCompanyAddressChange = (e) => {
-        let temp = this.state.companyAddress;
-        temp.addressIndex = e.detail.value;
-        temp.address = temp.addressRange[0][temp.addressIndex[0]] + ' - ' + temp.addressRange[1][temp.addressIndex[1]] + ' - ' + temp.addressRange[2][temp.addressIndex[2]];
-        this.setState({
-            companyAddress: temp
-        })
-    }
-    onCompanyAddressColumnChange = (e) => {
-        let temp = this.state.companyAddress;
-        let column = e.detail.column;
-        let row = e.detail.value;
-
-        temp.addressIndex[column] = row;
-
-        switch (column) {
-            case 0:
-                let t1 = [];
-                let t2 = [];
-                for (let i = 0; i < provice[row].city.length; i++) {
-                    t1.push(provice[row].city[i].name);
-                }
-                for (let i = 0; i < provice[row].city[0].districtAndCounty.length; i++) {
-                    t2.push(provice[row].city[0].districtAndCounty[i]);
-                }
-                temp.addressIndex[1] = 0;
-                temp.addressIndex[2] = 0;
-                temp.addressRange[1] = t1;
-                temp.addressRange[2] = t2;
-                break;
-            case 1:
-                let t = [];
-                for (let i = 0; i < provice[temp.addressIndex[0]].city[row].districtAndCounty.length; i++) {
-                    t.push(provice[temp.addressIndex[0]].city[row].districtAndCounty[i]);
-                }
-                temp.addressIndex[2] = 0;
-                temp.addressRange[2] = t;
-                break;
-            case 2:
-                break;
+        if (option == 'houseAddress') {
+            this.setState({
+                houseAddress: temp
+            }, () => { console.log(this.state.houseAddress) })
+        } else {
+            this.setState({
+                companyAddress: temp
+            }, () => { console.log(this.state.companyAddress) })
         }
-
-        this.setState({
-            companyAddress: temp
-        })
     }
-    onCompanyDetailAddressInput = (e) => {
-        let temp = this.state.companyAddress;
-        if (e.currentTarget.value != '' && temp.address != '请选择省市区') {
+
+    onInput = (option, e) => {
+        let temp = this.state[option];
+        if (e.currentTarget.value != '') {
             temp.finished = true;
         } else {
             temp.finished = false;
         }
-        this.setState({
-            companyAddress: temp
-        })
+        switch (option) {
+            case 'companyName':
+                this.setState({
+                    companyName: temp
+                }, () => {console.log(this.state.companyName)})
+                break;
+            case 'income':
+                this.setState({
+                    income: temp
+                }, () => {console.log(this.state.income)})
+                break;
+            case 'contactsName':
+                this.setState({
+                    contactsName: temp
+                }, () => {console.log(this.state.contactsName)})
+                break;
+            case 'contactsPhone':
+                this.setState({
+                    contactsPhone: temp
+                }, () => {console.log(this.state.contactsPhone)})
+                break;
+        }
     }
 
     // 单位电话
-    onPrefixInput = (e) => {
+    onCompanyPhoneInput = (option, e) => {
         let temp = this.state.companyPhone;
-        temp.prefix = e.currentTarget.value;
+        temp[option] = e.currentTarget.value;
         if (temp.prefix != '' && temp.phone != '' && temp.suffix != '') {
             temp.finished = true;
         } else {
@@ -407,51 +346,7 @@ export default class DetailInfo extends Component {
         }
         this.setState({
             companyPhone: temp
-        })
-    }
-    onCompanyPhoneInput = (e) => {
-        let temp = this.state.companyPhone;
-        temp.phone = e.currentTarget.value;
-        if (temp.prefix != '' && temp.phone != '' && temp.suffix != '') {
-            temp.finished = true;
-        } else {
-            temp.finished = false;
-        }
-        this.setState({
-            companyPhone: temp
-        })
-    }
-    onSuffixInput = (e) => {
-        let temp = this.state.companyPhone;
-        temp.suffix = e.currentTarget.value;
-        if (temp.prefix != '' && temp.phone != '' && temp.suffix != '') {
-            temp.finished = true;
-        } else {
-            temp.finished = false;
-        }
-        this.setState({
-            companyPhone: temp
-        })
-    }
-
-    onRelationshipRadioClick = (index) => {
-        // console.log('onRelationshipClick-' + e.currentTarget.title);
-        let temp = this.state.relationship;
-        temp.selected = parseInt(index);
-        temp.finished = true;
-        this.setState({
-            relationship: temp
-        }, () => {console.log(this.state.relationship)})
-    }
-
-    onPostalAddressRadioClick = (index) => {
-        // console.log('onPostalAddressClick-' + e.currentTarget.title);
-        let temp = this.state.postalAddress;
-        temp.selected = parseInt(index);
-        temp.finished = true;
-        this.setState({
-            postalAddress: temp
-        }, () => {console.log(this.state.postalAddress)})
+        }, () => { console.log(this.state.companyPhone) });
     }
 
     onConfirmClick = () => {
@@ -481,7 +376,7 @@ export default class DetailInfo extends Component {
                         </View>
 
                         {/* 身份证到期日 */}
-                        <MyRadio radioInfo={this.state.idCard} onRadioClick={this.onIdCardRadioClick} />
+                        <MyRadio radioInfo={this.state.idCard} onRadioClick={this.onRadioClick} />
                         {
                             this.state.idCard.selected == 0
                             ? 
@@ -504,10 +399,10 @@ export default class DetailInfo extends Component {
                             : <View></View>
                         }
 
-                        <MyRadio radioInfo={this.state.mariage} onRadioClick={this.onMariageRadioClick} />
-                        <MyRadio radioInfo={this.state.education} onRadioClick={this.onEducationRadioClick} />
+                        <MyRadio radioInfo={this.state.mariage} onRadioClick={this.onRadioClick} />
+                        <MyRadio radioInfo={this.state.education} onRadioClick={this.onRadioClick} />
 
-                        <MyRadio radioInfo={this.state.house} onRadioClick={this.onHouseRadioClick} />
+                        <MyRadio radioInfo={this.state.house} onRadioClick={this.onRadioClick} />
                         <View className='info-input-house-address'>
                             <View className='info-input-house-address-title'>
                                 <Text>{this.state.houseAddress.pickerName}</Text>
@@ -519,8 +414,8 @@ export default class DetailInfo extends Component {
                             >
                                 <Picker
                                   mode='multiSelector' 
-                                  onChange={this.onHouseAddressChange}
-                                  onColumnChange={this.onHouseAddressColumnChange}
+                                  onChange={this.onHouseAddressChange.bind(this, this.state.houseAddress.name)}
+                                  onColumnChange={this.onHouseAddressColumnChange.bind(this, this.state.houseAddress.name)}
                                   range={this.state.houseAddress.addressRange}
                                   value={this.state.houseAddress.addressIndex}
                                 >
@@ -539,21 +434,21 @@ export default class DetailInfo extends Component {
                                   className='info-input-house-address-input' 
                                   type='text' 
                                   placeholder='请具体到门牌号且不少于3个字'
-                                  onInput={this.onHouseDetailAddressInput}
+                                  onInput={this.onHouseDetailAddressInput.bind(this, this.state.houseAddress.name)}
                                 />
                             </View>
                         </View>
 
-                        <MyRadio radioInfo={this.state.job} onRadioClick={this.onJobRadioClick} />
-                        <MyRadio radioInfo={this.state.companyCharacter} onRadioClick={this.onCompanyCharacterRadioClick} />
-                        <MyRadio radioInfo={this.state.level} onRadioClick={this.onLevelRadioClick} />
+                        <MyRadio radioInfo={this.state.job} onRadioClick={this.onRadioClick} />
+                        <MyRadio radioInfo={this.state.companyCharacter} onRadioClick={this.onRadioClick} />
+                        <MyRadio radioInfo={this.state.level} onRadioClick={this.onRadioClick} />
 
                         <View className='info-input-item'>
                             <MyInput 
                               inputName={this.state.companyName.inputName} 
                               type='text' 
                               finished={this.state.companyName.finished} 
-                              onInput={this.state.companyName.onCompanyNameInput}
+                              onInput={this.onInput.bind(this, 'companyName')}
                             />
                         </View>
                         {/* 单位地址--简单复用住宅地址 */}
@@ -568,8 +463,8 @@ export default class DetailInfo extends Component {
                             >
                                 <Picker
                                   mode='multiSelector' 
-                                  onChange={this.onCompanyAddressChange}
-                                  onColumnChange={this.onCompanyAddressColumnChange}
+                                  onChange={this.onHouseAddressChange.bind(this, this.state.companyAddress.name)}
+                                  onColumnChange={this.onHouseAddressColumnChange.bind(this, this.state.companyAddress.name)}
                                   range={this.state.companyAddress.addressRange}
                                   value={this.state.companyAddress.addressIndex}
                                 >
@@ -588,7 +483,7 @@ export default class DetailInfo extends Component {
                                   className='info-input-house-address-input' 
                                   type='text' 
                                   placeholder='请具体到门牌号且不少于3个字'
-                                  onInput={this.onCompanyDetailAddressInput}
+                                  onInput={this.onHouseDetailAddressInput.bind(this, this.state.companyAddress.name)}
                                 />
                             </View>
                         </View>
@@ -609,7 +504,7 @@ export default class DetailInfo extends Component {
                                   type='number' 
                                   placeholder='区号' 
                                   className='info-input-company-phone-prefix' 
-                                  onInput={this.onPrefixInput}
+                                  onInput={this.onCompanyPhoneInput.bind(this, 'prefix')}
                                 />
                             </View>
                             <View className='info-input-company-phone-divide'>
@@ -620,7 +515,7 @@ export default class DetailInfo extends Component {
                                   type='number' 
                                   placeholder='电话号' 
                                   className='info-input-company-phone-phone' 
-                                  onInput={this.onCompanyPhoneInput}
+                                  onInput={this.onCompanyPhoneInput.bind(this, 'phone')}
                                 />
                             </View>
                             <View className='info-input-company-phone-divide'>
@@ -631,7 +526,7 @@ export default class DetailInfo extends Component {
                                   type='number' 
                                   placeholder='分机号' 
                                   className='info-input-company-phone-suffix' 
-                                  onInput={this.onSuffixInput}
+                                  onInput={this.onCompanyPhoneInput.bind(this, 'suffix')}
                                 />
                             </View>
                         </View>
@@ -643,7 +538,7 @@ export default class DetailInfo extends Component {
                                   inputName={this.state.income.inputName}
                                   type='number' 
                                   finished={this.state.income.finished}
-                                  onInput={this.state.income.onIncomeInput}
+                                  onInput={this.onInput.bind(this, 'income')}
                                   noPlaceholder
                                 />
                             </View>
@@ -655,7 +550,7 @@ export default class DetailInfo extends Component {
                               inputName={this.state.contactsName.inputName} 
                               type='text' 
                               finished={this.state.contactsName.finished} 
-                              onInput={this.state.contactsName.onContactsNameInput}
+                              onInput={this.onInput.bind(this, 'contactsName')}
                             />
                         </View>
                         <View className='info-input-item'>
@@ -663,11 +558,11 @@ export default class DetailInfo extends Component {
                               inputName={this.state.contactsPhone.inputName} 
                               type='number' 
                               finished={this.state.contactsPhone.finished} 
-                              onInput={this.state.contactsPhone.onContactsPhoneInput}
+                              onInput={this.onInput.bind(this, 'contactsPhone')}
                             />
                         </View>
-                        <MyRadio radioInfo={this.state.relationship} onRadioClick={this.onRelationshipRadioClick} />
-                        <MyRadio radioInfo={this.state.postalAddress} onRadioClick={this.onPostalAddressRadioClick} />
+                        <MyRadio radioInfo={this.state.relationship} onRadioClick={this.onRadioClick} />
+                        <MyRadio radioInfo={this.state.postalAddress} onRadioClick={this.onRadioClick} />
 
                         {/* 提交申请按钮 */}
                         <View className='info-input-confirm-btn' onClick={this.onConfirmClick}>
