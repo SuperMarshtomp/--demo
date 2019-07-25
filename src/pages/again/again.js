@@ -5,7 +5,6 @@ import './again.scss'
 import Title from '@components/title'
 
 import { getWindowHeight } from '@utils/style'
-import MyRadio from '@components/my-radio'
 
 export default class Again extends Component {
     state = {
@@ -22,7 +21,7 @@ export default class Again extends Component {
         houseAddress: '广东省汕头市'
     }
 
-    onRadioClick(index, e) {
+    onRadioClick = (index) => {
         let temp = this.state.radioInfo;
         temp.selected = parseInt(index);
 
@@ -38,6 +37,8 @@ export default class Again extends Component {
     }
 
     render () {
+        const { radioInfo } = this.state; 
+
         return (
             <View className='again' style={{ height: getWindowHeight() }}>
                 {/* h5需Title组件 */}
@@ -62,12 +63,12 @@ export default class Again extends Component {
                         </View>
                         <View className='again-radio-list'>
                             {
-                                this.state.radioInfo.radioList.map((item, index) => {
+                                radioInfo.radioList.map((item, index) => {
                                     return (
                                             <View
-                                              onClick={(e) => {this.onRadioClick(index, e)}} 
+                                              onClick={() => this.onRadioClick(index)} 
                                               key={item} 
-                                              className={this.state.radioInfo.selected != index 
+                                              className={radioInfo.selected != index 
                                                         ? 'again-radio-list-item'
                                                         : 'again-radio-list-item again-radio-list-item-red'}
                                             >
