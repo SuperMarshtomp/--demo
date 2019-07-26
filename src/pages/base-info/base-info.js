@@ -31,6 +31,9 @@ export default class BaseInfo extends Component {
 
     handleConfirmClick = () => {
         console.log('handleConfirmClick');
+        Taro.navigateTo({
+            url: '/pages/detail-info/detail-info'
+        })
     }
 
     render () {

@@ -3,8 +3,25 @@ import { View, Text, Icon } from '@tarojs/components'
 import './index.scss'
 
 export default class MyRadio extends Component {
+    static defaultProps = {
+        radioInfo: {
+            radioName: '身份证到期日',
+            radioList: ['手动输入', '长期有效'],
+            finished: false,
+            selected: -1
+        }
+    }
     render () {
-        const radioInfo = this.props.radioInfo;
+        // const radioInfo = this.props.radioInfo;
+        // let radioInfo = {};
+        // for (const i in this.props.radioInfo) {
+        //     if (typeof this.props.radioInfo[i] === 'object') {
+        //         radioInfo[i] = this.props.radioInfo[i].slice(0);
+        //     } else {
+        //         radioInfo[i] = this.props.radioInfo[i];
+        //     }
+        // }
+        let radioInfo = JSON.parse(JSON.stringify(this.props.radioInfo));
 
         const listLength = radioInfo.radioList.length > 4 ? 3 : radioInfo.radioList.length;
 
@@ -28,7 +45,7 @@ export default class MyRadio extends Component {
                                 ?
                                 (
                                     <View
-                                      onClick={(e) => {radioInfo.onRadioClick(index, e)}} 
+                                      onClick={() => {this.props.onRadioClick(index, radioInfo.name)}} 
                                       key={item} 
                                       className={radioInfo.selected != index 
                                                 ? 'my-radio-list-item my-radio-list-item-border my-radio-list-item-' + listLength
